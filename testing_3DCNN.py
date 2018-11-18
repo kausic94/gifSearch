@@ -141,18 +141,18 @@ class gifEmbedding():
         return out
 
 
-# In[4]:
+    # In[4]:
 
-# gif1 = Image.open('sample.gif')
-# frames = np.array([cv2.resize(np.array(frame.copy()),(256,256)) for frame in ImageSequence.Iterator(gif1)]).reshape(1,-1,256,256,1)
-# gif2 = Image.open('sample2.gif')
-# frames2 = np.array([cv2.resize(np.array(frame.copy()),(256,256)) for frame in ImageSequence.Iterator(gif2)]).reshape(1,-1,256,256,1)
-# gif3 = Image.open('sample3.gif')
-# frames3 = np.array([cv2.resize(np.array(frame.copy()),(256,256)) for frame in ImageSequence.Iterator(gif3)]).reshape(1,-1,256,256,1)
-# print frames.shape,frames2.shape,frames3.shape
+    # gif1 = Image.open('sample.gif')
+    # frames = np.array([cv2.resize(np.array(frame.copy()),(256,256)) for frame in ImageSequence.Iterator(gif1)]).reshape(1,-1,256,256,1)
+    # gif2 = Image.open('sample2.gif')
+    # frames2 = np.array([cv2.resize(np.array(frame.copy()),(256,256)) for frame in ImageSequence.Iterator(gif2)]).reshape(1,-1,256,256,1)
+    # gif3 = Image.open('sample3.gif')
+    # frames3 = np.array([cv2.resize(np.array(frame.copy()),(256,256)) for frame in ImageSequence.Iterator(gif3)]).reshape(1,-1,256,256,1)
+    # print frames.shape,frames2.shape,frames3.shape
 
 
-# In[ ]:
+    # In[ ]:
 
 if  __name__ == '__main__':
     tf.reset_default_graph()
@@ -160,25 +160,25 @@ if  __name__ == '__main__':
     ge.train()
 
 
-# In[9]:
+    # In[9]:
 
-# from scipy import ndimage
-# im_array = ndimage.imread("sample.gif")
-
-
-# In[12]:
-
-# print (im_array)
+    # from scipy import ndimage
+    # im_array = ndimage.imread("sample.gif")
 
 
-# In[13]:
+    # In[12]:
 
-# import matplotlib.pyplot as plt
-# %matplotlib inline
-# plt.imshow(im_array,cmap=)
+    # print (im_array)
 
 
-# In[ ]:
+    # In[13]:
+
+    # import matplotlib.pyplot as plt
+    # %matplotlib inline
+    # plt.imshow(im_array,cmap=)
+
+
+    # In[ ]:
 
 
 
