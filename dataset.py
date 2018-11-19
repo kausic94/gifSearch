@@ -13,6 +13,7 @@ from PIL import Image, ImageSequence
 import numpy as np
 import cv2
 import glob
+from random import randint
 
 class Dataset():
     def __init__(self,data):
@@ -50,6 +51,10 @@ class Dataset():
         for i,n in enumerate(range(start, end)):
             gif = Image.open('data/' + str(n+1) + '.gif')
             frames = [cv2.resize(np.array(frame.copy()),(self.img_resize,self.img_resize)) for frame in ImageSequence.Iterator(gif)]
+            while frames[0].shape != (self.img_resize, self.img_resize):
+                n = randint(0, self.train_num - 1)
+                gif = Image.open('data/' + str(n+1) + '.gif')
+                frames = [cv2.resize(np.array(frame.copy()),(self.img_resize,self.img_resize)) for frame in ImageSequence.Iterator(gif)]
             far_index = self.dataset_mapping.loc[self.dataset_mapping['FILENAME'] == (n+1)].index[0]
             gif_data[i] = self.max_frames(frames)
             gif_embedding[i] = self.doc2vec[n]
@@ -72,6 +77,10 @@ class Dataset():
         for j,n in enumerate(range(test_start, test_end)):
             gif = Image.open('data/' + str(n+1) + '.gif')
             frames = [cv2.resize(np.array(frame.copy()),(self.img_resize,self.img_resize)) for frame in ImageSequence.Iterator(gif)]
+            while frames[0].shape != (self.img_resize, self.img_resize):
+                n = randint(self.train_num, self.test_num - 1)
+                gif = Image.open('data/' + str(n+1) + '.gif')
+                frames = [cv2.resize(np.array(frame.copy()),(self.img_resize,self.img_resize)) for frame in ImageSequence.Iterator(gif)]
             far_index = self.dataset_mapping.loc[self.dataset_mapping['FILENAME'] == (n+1)].index[0]
             test_gif_data[j] = self.max_frames(frames)
             test_gif_embedding[j] = self.doc2vec[n]
